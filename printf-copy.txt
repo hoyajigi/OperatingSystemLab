@@ -1,0 +1,4 @@
+PRINTF(1) ntf OPTION
+
+DESCRIPTION
+       Print ARG
