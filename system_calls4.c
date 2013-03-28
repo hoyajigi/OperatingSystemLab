@@ -30,7 +30,7 @@ int main(int argc, char** argv) {
 	lseek(fd_tar,0,SEEK_SET );
 	buffer = (char *)malloc(BLOCKSIZE * sizeof(char));
 	do {
-		temp_cnt = read(fd_ori,buffer,BLOCKSIZE );
+		temp_cnt = read(fd_ori,buffer,BLOCKSIZE-1);
 		printf("read:\t %d bytes / Total:\t %d bytes\n", temp_cnt, read_cnt =+ temp_cnt);
 		buffer[temp_cnt] = '\0';
 		write(fd_tar,buffer,temp_cnt );
