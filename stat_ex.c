@@ -3,23 +3,23 @@
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
-?
+
 int main(int argc, char *argv[])
 {
     struct stat sb;
-?
+
    if (argc != 2) {
         fprintf(stderr, "Usage: %s <pathname>\n", argv[0]);
         exit(EXIT_FAILURE);
     }
-?
-   if (stat(argv[1], &sb) == -1) {
+
+   if (lstat(argv[1], &sb) == -1) {
         perror("stat");
         exit(EXIT_FAILURE);
     }
-?
+
    printf("File type:                ");
-?
+
    switch (sb.st_mode & S_IFMT) {
     case S_IFBLK:  printf("block device\n");            break;
     case S_IFCHR:  printf("character device\n");        break;
@@ -30,10 +30,10 @@ int main(int argc, char *argv[])
     case S_IFSOCK: printf("socket\n");                  break;
     default:       printf("unknown?\n");                break;
     }
-?
+
    printf("I-node number:            %ld\n", (long) sb.st_ino);
-?
+
    exit(EXIT_SUCCESS);
 }
-?
+
 
